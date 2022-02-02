@@ -15,7 +15,7 @@ document.addEventListener("DOMContentLoaded", function () {
         });
     }
 
-    document.getElementById("answer-box").addEventListener("keydown", function(event) {
+    document.getElementById("answer-box").addEventListener("keydown", function (event) {
         if (event.key === "Enter") {
             checkAnswer();
         }
@@ -43,8 +43,9 @@ function runGame(gameType) {
     } else if (gameType === "multiply") {
         displayMultiplyQuestion(num1, num2);
     } else if (gameType === "subtract") {
-        displayDivisionQuestion(num1, num2);
+        displaySubtractQuestion(num1, num2);
     } else if (gameType === "division") {
+        num1 = num1 * num2;
         displayDivisionQuestion(num1, num2);
     } else {
         alert(`Unknown game type: ${gameType}`);
@@ -93,9 +94,8 @@ function calculateCorrectAnswer() {
     } else if (operator === "-") {
         return [operand1 - operand2, "subtract"];
     } else if (operator === "/") {
-        return [operand1 - operand2, "division"];
-    } 
-    else {
+        return [operand1 / operand2, "division"];
+    } else {
         alert(`Unimplemented operator ${operator}`);
         throw `Unimplemented operator ${operator}. Aborting!`;
     }
@@ -105,7 +105,7 @@ function calculateCorrectAnswer() {
  */
 function incrementScore() {
     let oldScore = parseInt(document.getElementById("score").innerText);
-    document.getElementById("score").innerText = ++oldScore; 
+    document.getElementById("score").innerText = ++oldScore;
 
 }
 /**
@@ -113,7 +113,7 @@ function incrementScore() {
  */
 function incrementWrongAnswer() {
     let oldScore = parseInt(document.getElementById("incorrect").innerText);
-    document.getElementById("incorrect").innerText = ++oldScore; 
+    document.getElementById("incorrect").innerText = ++oldScore;
 
 }
 
